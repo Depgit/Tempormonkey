@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let tagsRequire = "implementation;graphs"
+        let tagsNotRequire = "dp;brute force"
+        let splitTagRequire = tagsRequire.split(";")
+        let splitTagNotRequire = tagsNotRequire.split(";")
+        fetch(`https://codeforces.com/api/problemset.problems?tags=${tagsRequire}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.status == "OK"){
+                let problems = data.result.problems;
+                let problems_html = "";
+                problems.forEach(problem => {
+                    console.log(problem.tags);
+                    let pass = true;
+                    problem.tags.forEach(tag => {
+                        if(splitTagNotRequire.includes(tag)){
+                            pass = false;
+                        }
+                    })
+                    if(pass){
+                        problems_html += `<div>
+                                        <h3>${problem.name}</h3>
+                                        <h4>${problem.rating}</h4>
+                                        <a href="https://codeforces.com/contest/${problem.contestId}/problem/${problem.index}">${problem.tags}</a>
+                                    </div>`;
+                    }
+                    
+                });
+                document.getElementById('problems').innerHTML = problems_html;
+            }
+        })
+    </script>
+    <div id="problems"></div>
+</body>
+</html>
