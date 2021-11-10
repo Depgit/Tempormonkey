@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         submission
-// @name:useless
+// @name:        useless
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  show your accepted submissions on your sidebar
 // @author       pi07
-// @match        https://codeforces.com/*
+// @match        https://codeforces.com/
 // @grant        none
 // ==/UserScript==
 
