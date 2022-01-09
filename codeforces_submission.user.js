@@ -4,7 +4,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  show your accepted submissions on your sidebar
-// @author       pi07
+// @author       drpzet
 // @match        https://codeforces.com/
 // @grant        none
 // ==/UserScript==
